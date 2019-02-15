@@ -14,7 +14,7 @@
                 function mostrar(){
                     var x=document.getElementById("carousel-example-generic");
                     x.style.display="none";  
-                    var doble=x;;
+                    var doble=x;
     }
         </script>
     </head>
