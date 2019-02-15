@@ -14,6 +14,7 @@
         <script>
             function getprovincia(){
                 cdep = document.getElementById("seldpto").value;
+                codeee;
                 $.ajax({
                     data:{dpto:cdep},
                     type: 'POST',
