@@ -13,7 +13,7 @@
         <script>
                 function mostrar(){
                     var x=document.getElementById("carousel-example-generic");
-                    x.style.display="none";
+                    x.style.display="none";  
     }
         </script>
     </head>
