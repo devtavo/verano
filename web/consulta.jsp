@@ -86,7 +86,13 @@
               <td>DENUNCIANTE</td>
           </tr>
           <tr>
-              <td>Nombre:</td>
+              <td>Nombre:<%=d.getNombre() %></td>
+              <%if(d.getIdtipodocumento().equals("1"))
+              {%>
+              <td> Documento de Identidad:<input type="text"  disabled="true" value="<%=d.getDni()%>"></td>
+          <%}else{%>
+          <td> Documento de Identidad: <input type="text"  disabled="true" value="<%=d.getDni()%>"></td>
+           <%  } %>
           </tr>
       </table>
       <%}%>
