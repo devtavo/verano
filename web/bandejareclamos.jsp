@@ -4,6 +4,10 @@
     Author     : gustavo-pc
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="br.personabr"%>
+<%@page import="be.personabe"%>
+<%@page import="be.personabe"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,12 +21,27 @@
                     var x=document.getElementById("carousel-example-generic");
                     x.style.display="none";
     }
+    function enviar(){
+        var date1=document.getElementById("date1").value;
+        var date2=document.getElementById("date2").value;
+        var funcionario=document.getElementById("func").value;
+        var selestado=document.getElementById("selestado").value;
+         $.ajax({
+                    data:{date1:date1, date2:date2, funcionario:funcionario, selestado:selestado},
+                    type: 'POST',
+                    url: "consultaBR.jsp",
+                    success: function (response) {
+                        document.getElementById("divbuscaBR").innerHTML=response;
+                    }
+                });
+    }
         </script>
     </head>
     <body onload="mostrar()">
+         
                <jsp:include page="index.html"></jsp:include>
 
-               <form name="frmbanRecla">
+               <form name="frmbanRecla" >
                    <div class="panel panel-success">
                        
                    <div class="panel-heading text-uppercase">
@@ -36,8 +55,8 @@
                                </tr>
                            </thead>
                            <tr>
-                               <td><input type="text" ></td>
-                               <td><input type="date" >-<input type="date" ></td>
+                               <td><input type="text" id="func" ></td>
+                               <td><input type="date" id="date1" name="date1" >-<input type="date" id="date2" name="date2"></td>
                                
                                <td>
                                    <select id="selestado" name="selestado"> 
@@ -45,166 +64,20 @@
                                        <option value="todas">todas</option>
                                    </select>
                                </td>
-                               <td><button value="buscar" class="btn btn-block">buscar</button> </td>
+                               <td><button value="buscar" class="btn btn-block" onclick="enviar()" >buscar</button> </td>
                            </tr>
+                           
 
                        </table>
+                    
                    </div>
-               </div>
-                  <div>
-                   <div class=" panel text-uppercase">
-                       <table class="table table-hover" id="myTable">
-                           <thead class="black white-text ">
-                               <tr><th>#</th>
-                                   <th >Ticket</th>
-                                   <th >Fecha</th>
-                                   <th>Apellido y nombres</th>
-                                   <th>Categoria</th>
-                                   <th>Estados</th>
-                               </tr>  
-                           </thead>
-                           <tbody> 
-                               <tr>
-                                       <td>1</td>
-                                       <td>dddd </td>
-                                       <td>54546</td>
-                                       <td>dw</td>
-                                       <td>dwdwd</td>
-                                       <td>wdwd</td>
-                                       <td>
-                                           <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">ver</button>
-                                           <button type="button" class="btn btn-info">editar</button>
-                                           <button type="button" class="btn btn-toolbar">seguimiento</button>
-                                           
-                                       </td>
-                               </tr>
-                               <tr>
-                                       <td>2</td>
-                                       <td>dddd </td>
-                                       <td>54546</td>
-                                       <td>dw</td>
-                                       <td>dwdwd</td>
-                                       <td>wdwd</td>
-                                       <td>
-                                           <button type="button" class="btn btn-success">ver</button>
-                                           <button type="button" class="btn btn-info">editar</button>
-                                           <button type="button" class="btn btn-toolbar">seguimiento</button>
-                                           
-                                       </td>
-                               </tr>
-                               <tr>
-                                       <td>3</td>
-                                       <td>dddd </td>
-                                       <td>54546</td>
-                                       <td>dw</td>
-                                       <td>dwdwd</td>
-                                       <td>wdwd</td>
-                                       <td>
-                                           <button type="button" class="btn btn-success">ver</button>
-                                           <button type="button" class="btn btn-info">editar</button>
-                                           <button type="button" class="btn btn-toolbar">seguimiento</button>
-                                           
-                                       </td>
-                               </tr>
-                                <tr>
-                                       <td>4</td>
-                                       <td>dddd </td>
-                                       <td>54546</td>
-                                       <td>dw</td>
-                                       <td>dwdwd</td>
-                                       <td>wdwd</td>
-                                       <td>
-                                           <button type="button" class="btn btn-success">ver</button>
-                                           <button type="button" class="btn btn-info">editar</button>
-                                           <button type="button" class="btn btn-toolbar">seguimiento</button>
-                                           
-                                       </td>
-                               </tr>
-                                <tr>
-                                       <td>5</td>
-                                       <td>dddd </td>
-                                       <td>54546</td>
-                                       <td>dw</td>
-                                       <td>dwdwd</td>
-                                       <td>wdwd</td>
-                                       <td>
-                                           <button type="button" class="btn btn-success">ver</button>
-                                           <button type="button" class="btn btn-info">editar</button>
-                                           <button type="button" class="btn btn-toolbar">seguimiento</button>
-                                           
-                                       </td>
-                               </tr>
-                                <tr>
-                                       <td>5</td>
-                                       <td>dddd </td>
-                                       <td>54546</td>
-                                       <td>dw</td>
-                                       <td>dwdwd</td>
-                                       <td>wdwd</td>
-                                       <td>
-                                           <button type="button" class="btn btn-success">ver</button>
-                                           <button type="button" class="btn btn-info">editar</button>
-                                           <button type="button" class="btn btn-toolbar">seguimiento</button>
-                                           
-                                       </td>
-                               </tr>
-                                <tr>
-                                       <td>5</td>
-                                       <td>dddd </td>
-                                       <td>54546</td>
-                                       <td>dw</td>
-                                       <td>dwdwd</td>
-                                       <td>wdwd</td>
-                                       <td>
-                                           <button type="button" class="btn btn-success">ver</button>
-                                           <button type="button" class="btn btn-info">editar</button>
-                                           <button type="button" class="btn btn-toolbar">seguimiento</button>
-                                           
-                                       </td>
-                               </tr>
-                                <tr>
-                                       <td>5</td>
-                                       <td>dddd </td>
-                                       <td>54546</td>
-                                       <td>dw</td>
-                                       <td>dwdwd</td>
-                                       <td>wdwd</td>
-                                       <td>
-                                           <button type="button" class="btn btn-success">ver</button>
-                                           <button type="button" class="btn btn-info">editar</button>
-                                           <button type="button" class="btn btn-toolbar">seguimiento</button>
-                                           
-                                       </td>
-                               </tr>
-                                <tr>
-                                       <td>5</td>
-                                       <td>dddd </td>
-                                       <td>54546</td>
-                                       <td>dw</td>
-                                       <td>dwdwd</td>
-                                       <td>wdwd</td>
-                                       <td>
-                                           <button type="button" class="btn btn-success">ver</button>
-                                           <button type="button" class="btn btn-info">editar</button>
-                                           <button type="button" class="btn btn-toolbar">seguimiento</button>
-                                           
-                                       </td>
-                               </tr>
-                           </tbody>
-                       </table>
-                      <ul class="pagination" id="myPager"></ul>
+                    <ul class="pagination" id="myPager"></ul>
                    </div>
-                  </div>
+                
                </form>  
-               <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-          <div class="modal-header">
-              
-          </div></div>
-      </div></div>
+              <div class="panel text-uppercase" >
+                                   <div id="divbuscaBR">
+                                        </div>            
+               </div>                 
     </body>
 </html>

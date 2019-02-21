@@ -7,6 +7,7 @@ package br;
 
 import be.personabe;
 import dao.personadao;
+import java.util.List;
 
 /**
  *
@@ -16,5 +17,9 @@ public class personabr {
     
     public int registrarpersona(personabe e){
         return new personadao().registrar(e);
+    }
+    public List<personabe> obtener(personabe e){
+        return new personadao().getpersona(e);
+                
     }
 }

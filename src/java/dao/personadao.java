@@ -5,11 +5,14 @@
  */
 package dao;
 
+import be.distritobe;
 import be.personabe;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -81,5 +84,44 @@ public class personadao {
         }
         
         return r;
+    }
+    
+    public List<personabe> getpersona(personabe e){
+        List<personabe> lista= new ArrayList();
+         String sql= "select * from persona where idpersona= ?";
+         Connection c=null;
+         c=new base().getMysql();
+         
+        try {
+            PreparedStatement pst= c.prepareCall(sql);
+             pst.setInt(1, e.getIdpersona());
+           
+             
+            ResultSet rs=pst.executeQuery();
+            while(rs.next()){
+                
+               e.setIdpersona(rs.getInt("idpersona"));
+               e.setFecha(rs.getString("fecha"));
+               e.setNombre(rs.getString("nombre"));
+               e.setDomicilio(rs.getString("domicilio"));
+               e.setTelefono(rs.getString("telefono"));
+               e.setCelular(rs.getString("celular"));
+               e.setEmail(rs.getString("email"));
+               e.setIddepartamento(rs.getString("iddepartamento"));
+               e.setIdprovincia(rs.getString("idprovincia"));
+               e.setIddistrito(rs.getString("iddistrito"));      
+               e.setIdtipodocumento(Integer.toString(rs.getInt("idtipodocumento")));
+               e.setDescripcion(rs.getString("descripcion"));
+               e.setArchivo(rs.getString("archivo"));
+               e.setDni(rs.getString("dni"));
+               e.setFuncionario(rs.getString("funcionario"));
+               lista.add(e);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(personadao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return lista;
+        
     }
 }

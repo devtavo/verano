@@ -48,7 +48,7 @@
       <!-- Modal content-->
       <div class="modal-content">
           <div class="modal-header">
-              codigo:<input type="text" id="cod" name="cod" > <button data-dismiss="modal" 
+              codigo:<input type="text" id="cod" name="cod" autofocus="true" > <button data-dismiss="modal" 
                                                                       id="close" value="enviar" 
                                                                       onclick="buscar()">envair</button>
 

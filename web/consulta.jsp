@@ -67,45 +67,125 @@
                                
                            </tbody>
                        </table>
-               <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-     
-      <!-- Modal content-->
-      <div class="modal-content">
-          <div class="modal-header">
-             <div class="panel panel-default">
-  <div class="panel-heading">
-      <h3 class="panel-title">Ticket nro: <%=d.getIdpersona()%>-Fecha:<%=d.getFecha()%></h3>
-  </div>
+<div class="modal fade" tabindex="-1" id="myModal" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <!--aqui va el titulo-->
+        <h4 class="modal-title">Ticket nro: <%=d.getIdpersona()%>-Fecha:<%=d.getFecha()%></h4>
+      </div>
+      <div class="modal-body">
+       <!--aqui todo el cuerpo del modal-->
+       <table >
+           <tr>
+               <td>
+  <div class="panel panel-primary small h6">
+  <div class="panel-heading">DENUNCIANTE</div>
   <div class="panel-body">
-      <!-- Modal contenido-->
-   
-      <table>
+    <table class="text-capitalize" border="2" bordercolor="white">
           <tr>
-              <td>DENUNCIANTE</td>
-          </tr>
-          <tr>
-              <td>Nombre:<%=d.getNombre() %></td>
               <%if(d.getIdtipodocumento().equals("1"))
               {%>
-              <td> Documento de Identidad:<input type="text"  disabled="true" value="<%=d.getDni()%>"></td>
-          <%}else{%>
-          <td> Documento de Identidad: <input type="text"  disabled="true" value="<%=d.getDni()%>"></td>
-           <%  } %>
+              <td> DNI:</td><td><input type="text"  size="30" disabled="true" value="<%=d.getDni()%>"></td>
+                 <%}else{%>
+              <td> RUC:</td><td> <input type="text"  size="30"disabled="true" value="<%=d.getDni()%>"></td>
+                     <%  } %>
+              <td>Telefono:</td><td><input type="text" size="30" disabled="true" value="<%=d.getTelefono()%>"></td>
+              
           </tr>
-      </table>
-      <%}%>
+          <tr>
+              <td>Nombre:</td><td><input type="text" size="30" disabled="true" value="<%=d.getNombre() %>"></td>
+              <td>Celular:</td><td><input type="text"  size="30"disabled="true" value="<%=d.getCelular()%>"></td>
+          </tr>
+           <tr>
+               <td>Dep/Prov/Dist:</td><td><input type="text"  size="30" disabled="true" value="<%=d.getIddepartamento() %> <%=d.getIdprovincia() %>"></td>
+          </tr>
+          <tr>
+               <td>Domicilio:</td><td><input type="text"  size="30" disabled="true" value="<%=d.getDomicilio()%>"></td>
+          </tr>
+          <tr>
+               <td>Email:</td><td><input type="text" size="30" disabled="true" value="<%=d.getEmail() %>"><br><br></td>
+               
+          </tr><br>
+           
+      </table> 
+      
  
-      <!-- Modal contenido-->
-  
   </div>
 </div>
-          </div></div>
-      </div></div>
-              
-        
-        
-        </div>
+               </td>
+               <td >
+  <div class="panel panel-primary small h6">
+  <div class="panel-heading">DENUNCIADO</div>
+  <div class="panel-body">
+      <table>
+          <Tr>
+              <td>
+                  Funcionario:<br><br><br><br>
+              </td>
+              <td><input  disabled=""><br><br><br><br>
+              </td>
+          </tr>
+          <Tr>
+              <td>
+                  <br><br><br><br>
+              </td>
+          </tr>
+          
+          <Tr>
+              <td>
+                  Area:</td>
+              <td><input disabled="">
+              </td>
+          </tr>
+
+      </table>
+      
+  </div>
+  </div>
+               </td>
+
+           </tr>
+         
+           <tr>
+               <td>
+                   <div class="panel panel-primary small h6">
+  <div class="panel-heading">DESCRIPCION DE LA DENUNCIA</div>
+  <div class="panel-body">
+      <textarea class="form-control" rows="2" cols="2" disabled="true"><%=d.getDescripcion() %> </textarea>
+        <%}%>
+        <br>
+  </div>
+  </div>
+               </td>
+               <td>
+                   <div class="panel panel-primary small h6">
+  <div class="panel-heading">ARCHIVOS ADJUNTOS</div>
+  <div class="panel-body">
+      <table>
+          <tr>
+              <td>
+                  <br><br><br><br><br>
+              </td>
+          </tr>
+      </table>
+  </div>
+  </div>
+               </td>
+
+           </tr>
+
+       </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+            
+      </div>
     </body>
 </html>

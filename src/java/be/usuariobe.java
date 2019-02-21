@@ -13,15 +13,18 @@ public class usuariobe {
     
     private int idusuario;
     private String nomusuario;
+    private String claveusuario;
     
 
     public usuariobe() {
     }
 
-    public usuariobe(int idusuario, String nomusuario) {
+    public usuariobe(int idusuario, String nomusuario, String claveusuario) {
         this.idusuario = idusuario;
         this.nomusuario = nomusuario;
+        this.claveusuario = claveusuario;
     }
+
 
     public int getIdusuario() {
         return idusuario;
@@ -40,5 +43,16 @@ public class usuariobe {
     }
 
     
+    public String getClaveusuario() {
+        return claveusuario;
+    }
+
+    public void setClaveusuario(String claveusuario) {
+        this.claveusuario = claveusuario;
+    }
+
+    public int validando(String nombre, String contra) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
           
 }

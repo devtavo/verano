@@ -16,6 +16,8 @@
     </head>
     <body>
         <% List<departamentobe> lista= new depabr().listadepa();
+        
+
         %>
         <select class="form-control" id="seldpto" name="seldpto" onchange="getprovincia()">
  <% for(departamentobe d:lista){
