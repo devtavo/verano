@@ -18,6 +18,9 @@ public class personabr {
     public int registrarpersona(personabe e){
         return new personadao().registrar(e);
     }
+     public int registrarcliente(){
+        return new personadao().registrarcliente();
+    }
     public List<personabe> obtener(personabe e){
         return new personadao().getpersona(e);
                 

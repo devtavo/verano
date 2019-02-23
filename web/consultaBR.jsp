@@ -33,20 +33,16 @@
                 
             
             
-//       personabe p=new personabe();
-//       
-//       
-//        personabr pbr=new personabr();
-//        personabe pbe= new personabe();
-//        pbe.setIdpersona(Integer.parseInt(cod));
-//        
-//        List<personabe> lis= pbr.obtener(pbe);
+       personabe p=new personabe();
+           
+        personabr pbr=new personabr();
+        personabe pbe= new personabe();
+        pbe.setIdpersona(Integer.parseInt(funcionario));
+        
+        List<personabe> lis= pbr.obtener(pbe);
  
        %>
-       <%=funcionario%>
-       <%=date2  %>
-       <%=date1%>
-       <%=estado%>
+       
        
    
     </body>

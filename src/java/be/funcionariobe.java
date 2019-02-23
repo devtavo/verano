@@ -11,18 +11,19 @@ package be;
  */
 public class funcionariobe {
     private int idfuncionario;
+    private String nomfuncionario;
     private String area;
     private int idcargo;
-    private int idpersona;
+   
 
     public funcionariobe() {
     }
 
-    public funcionariobe(int idfuncionario, String area, int idcargo, int idpersona) {
+    public funcionariobe(int idfuncionario, String nomfuncionario, String area, int idcargo) {
         this.idfuncionario = idfuncionario;
+        this.nomfuncionario = nomfuncionario;
         this.area = area;
-        this.idcargo = idcargo;
-        this.idpersona = idpersona;
+        this.idcargo = idcargo;       
     }
 
     public int getIdfuncionario() {
@@ -31,6 +32,14 @@ public class funcionariobe {
 
     public void setIdfuncionario(int idfuncionario) {
         this.idfuncionario = idfuncionario;
+    }
+
+    public String getNomfuncionario() {
+        return nomfuncionario;
+    }
+
+    public void setNomfuncionario(String nomfuncionario) {
+        this.nomfuncionario = nomfuncionario;
     }
 
     public String getArea() {
@@ -48,15 +57,5 @@ public class funcionariobe {
     public void setIdcargo(int idcargo) {
         this.idcargo = idcargo;
     }
-
-    public int getIdpersona() {
-        return idpersona;
-    }
-
-    public void setIdpersona(int idpersona) {
-        this.idpersona = idpersona;
-    }
-    
-    
-    
+ 
 }

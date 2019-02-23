@@ -4,6 +4,11 @@
     Author     : gustavo-pc
 --%>
 
+<%@page import="br.funcionariobr"%>
+<%@page import="be.funcionariobe"%>
+<%@page import="br.estadobr"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="be.estadobe"%>
 <%@page import="java.util.List"%>
 <%@page import="br.personabr"%>
 <%@page import="be.personabe"%>
@@ -24,14 +29,14 @@
     function enviar(){
         var date1=document.getElementById("date1").value;
         var date2=document.getElementById("date2").value;
-        var funcionario=document.getElementById("func").value;
+        var funcionario=document.getElementById("selfunc").value;
         var selestado=document.getElementById("selestado").value;
          $.ajax({
                     data:{date1:date1, date2:date2, funcionario:funcionario, selestado:selestado},
                     type: 'POST',
                     url: "consultaBR.jsp",
                     success: function (response) {
-                        document.getElementById("divbuscaBR").innerHTML=response;
+                        document.getElementById("divb").innerHTML=response;
                     }
                 });
     }
@@ -41,7 +46,7 @@
          
                <jsp:include page="index.html"></jsp:include>
 
-               <form name="frmbanRecla" >
+
                    <div class="panel panel-success">
                        
                    <div class="panel-heading text-uppercase">
@@ -55,13 +60,26 @@
                                </tr>
                            </thead>
                            <tr>
-                               <td><input type="text" id="func" ></td>
+                               <td><%
+                               List<funcionariobe> lfunc= new funcionariobr().listafuncionario();
+                                 %>
+                                   <select id="selfunc" name="selfunc"> 
+                                       <option value="-1">.:seleccione una opcion</option>
+                                       <% for (funcionariobe es : lfunc) {
+                                        %><option value="<%=es.getIdfuncionario() %>"><%=es.getNomfuncionario() %></option>
+                                      <%}%>
+                                   </select>
+                               </td></td>
                                <td><input type="date" id="date1" name="date1" >-<input type="date" id="date2" name="date2"></td>
                                
                                <td>
+                               <%
+                               List<estadobe> lest= new estadobr().listaestado();
+                                 %>
                                    <select id="selestado" name="selestado"> 
-                                       <option value="todas">todas-------------</option>
-                                       <option value="todas">todas</option>
+                                       <% for (estadobe es : lest) {
+                                        %><option value="<%=es.getIdestado()%>"><%=es.getEstado()%></option>
+                                      <%}%>
                                    </select>
                                </td>
                                <td><button value="buscar" class="btn btn-block" onclick="enviar()" >buscar</button> </td>
@@ -69,15 +87,15 @@
                            
 
                        </table>
-                    
-                   </div>
+                                  
+                  
+                <div>
+                                   <div id="divb">
+                                        </div>            
+               </div>   
+                </div>
                     <ul class="pagination" id="myPager"></ul>
                    </div>
-                
-               </form>  
-              <div class="panel text-uppercase" >
-                                   <div id="divbuscaBR">
-                                        </div>            
-               </div>                 
+              
     </body>
 </html>

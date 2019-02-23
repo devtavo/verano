@@ -119,8 +119,8 @@
                     <td colspan="2">funcionario</td>
                 </tr>                
                 <tr>
-                    <td colspan="2"><input type="text" class="form-control" name="fecha" id="fecha"></td>
-                    <td colspan="2"><input type="text" class="form-control" name="funcionario" id="funcionario"></td>
+                    <td colspan="2"><input type="date" class="form-control" name="fecha" id="fecha"></td>
+                    <td colspan="2"><jsp:include page="funcionario.jsp"/> </td>
                     
                 </tr>              
                 <tr>

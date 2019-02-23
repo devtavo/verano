@@ -11,12 +11,12 @@ package be;
  */
 public class estadobe {
     private int idestado;
-    private int estado;
+    private String estado;
 
     public estadobe() {
     }
 
-    public estadobe(int idestado, int estado) {
+    public estadobe(int idestado, String estado) {
         this.idestado = idestado;
         this.estado = estado;
     }
@@ -29,11 +29,11 @@ public class estadobe {
         this.idestado = idestado;
     }
 
-    public int getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(int estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
     

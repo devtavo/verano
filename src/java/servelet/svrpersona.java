@@ -39,10 +39,6 @@ public class svrpersona extends HttpServlet {
             if(accion.equals("insertar")){
                 this.RegistrarPersona(request, response);             
             }
-            
-
-            
-            
         }
     }
    
@@ -63,12 +59,11 @@ public class svrpersona extends HttpServlet {
         p.setArchivo(request.getParameter("customFileLang"));
         p.setDni(request.getParameter("dni"));
         p.setFecha(request.getParameter("fecha"));
-        p.setFuncionario(request.getParameter("funcionario"));
-            
-     
+        p.setFuncionario(request.getParameter("selfunc"));
       personabr pbr= new personabr();
        int resp= pbr.registrarpersona(p);
-
+       pbr.registrarcliente();
+       
        if(resp==1){
             response.sendRedirect("index.html"); 
         }else{

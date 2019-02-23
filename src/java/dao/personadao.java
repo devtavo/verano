@@ -48,7 +48,7 @@ public class personadao {
             pst.setString(12, e.getArchivo());
             pst.setString(13, e.getDni());
             pst.setString(14, e.getFecha());
-            pst.setString(15, e.getFuncionario());
+            pst.setString(15,e.getFuncionario());
             
             r=pst.executeUpdate();
             pst.close();
@@ -70,6 +70,55 @@ public class personadao {
             ResultSet rs=pst.executeQuery();
             if(rs.next()){
                 r=rs.getInt("codigo");
+            }
+            rs.close();
+            rs=null;
+            
+            pst.close();
+            pst=null;
+            
+            //c.close();
+            //c=null;
+        } catch (SQLException ex) {
+            Logger.getLogger(personadao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return r;
+    }
+    public int registrarcliente(){
+        int r=0;
+            String sql= "insert into cliente(idcliente,idpersona) values(?,?)";
+            Connection c=null;
+       try {
+                 
+            c=new base().getMysql();
+            int id=nuevoIdcliente(c);
+            int idpersona=nuevoId(c)-1;
+            PreparedStatement pst=c.prepareCall(sql);
+            pst.setInt(1, id);
+            pst.setInt(2, idpersona);
+            
+            
+            r=pst.executeUpdate();
+            pst.close();
+            pst=null;
+            c.close();
+            c=null;
+        } catch (SQLException ex) {
+            Logger.getLogger(personadao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return r;
+    }
+    private int nuevoIdcliente(Connection c){
+        int r=0;
+        String sql="select IFNULL(max(idcliente),0)+1 codigoc from cliente";
+        
+        try {
+            PreparedStatement pst= c.prepareCall(sql);
+            
+            ResultSet rs=pst.executeQuery();
+            if(rs.next()){
+                r=rs.getInt("codigoc");
             }
             rs.close();
             rs=null;
