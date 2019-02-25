@@ -64,7 +64,7 @@
                                List<funcionariobe> lfunc= new funcionariobr().listafuncionario();
                                  %>
                                    <select id="selfunc" name="selfunc"> 
-                                       <option value="-1">.:seleccione una opcion</option>
+                                       <option value="-1">.:seleccione una opcion:.</option>
                                        <% for (funcionariobe es : lfunc) {
                                         %><option value="<%=es.getIdfuncionario() %>"><%=es.getNomfuncionario() %></option>
                                       <%}%>
@@ -77,8 +77,10 @@
                                List<estadobe> lest= new estadobr().listaestado();
                                  %>
                                    <select id="selestado" name="selestado"> 
+                                       <option value="-1">.:seleccione una opcion:.</option>
                                        <% for (estadobe es : lest) {
-                                        %><option value="<%=es.getIdestado()%>"><%=es.getEstado()%></option>
+                                        %>
+                                        <option value="<%=es.getIdestado()%>"><%=es.getEstado()%></option>
                                       <%}%>
                                    </select>
                                </td>

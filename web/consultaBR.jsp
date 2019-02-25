@@ -29,11 +29,8 @@
             String date1=request.getParameter("date1"); 
             String date2=request.getParameter("date2"); 
             String estado=request.getParameter("selestado"); 
-        
-                
-            
-            
-       personabe p=new personabe();
+   
+            personabe p=new personabe();
            
         personabr pbr=new personabr();
         personabe pbe= new personabe();
@@ -43,7 +40,7 @@
  
        %>
        
-       
+       <%=funcionario%> 
    
     </body>
 </html>
