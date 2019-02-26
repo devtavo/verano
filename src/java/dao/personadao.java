@@ -6,6 +6,7 @@
 package dao;
 
 import be.distritobe;
+import be.funcionariobe;
 import be.personabe;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,10 +23,7 @@ import java.util.logging.Logger;
  */
 public class personadao {
 
-    public personadao() {
-    }
-    
-    public int registrar(personabe e){
+     public int registrar(personabe e){
         int r=0;
             String sql= "insert into persona(idpersona, nombre, domicilio, telefono, celular, email, iddepartamento, idprovincia, iddistrito, idtipodocumento,descripcion,archivo,dni,fecha,funcionario) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             Connection c=null;
@@ -137,7 +135,7 @@ public class personadao {
     
     public List<personabe> getpersona(personabe e){
         List<personabe> lista= new ArrayList();
-         String sql= "select * from persona where idpersona= ?";
+         String sql= "select * from persona p, funcionario f where p.idpersona=? and f.idfuncionario=p.funcionario";
          Connection c=null;
          c=new base().getMysql();
          
@@ -163,8 +161,9 @@ public class personadao {
                e.setDescripcion(rs.getString("descripcion"));
                e.setArchivo(rs.getString("archivo"));
                e.setDni(rs.getString("dni"));
-               e.setFuncionario(rs.getString("funcionario"));
+               e.setFuncionario(rs.getString("idfuncionario"));
                lista.add(e);
+               
             }
         } catch (SQLException ex) {
             Logger.getLogger(personadao.class.getName()).log(Level.SEVERE, null, ex);

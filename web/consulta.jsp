@@ -4,10 +4,13 @@
     Author     : gustavo-pc
 --%>
 
+<%@page import="br.funcionariobr"%>
 <%@page import="java.util.List"%>
 <%@page import="br.personabr"%>
 <%@page import="be.personabe"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -98,9 +101,27 @@
               <td>Nombre:</td><td><input type="text" size="30" disabled="true" value="<%=d.getNombre() %>"></td>
               <td>Celular:</td><td><input type="text"  size="30"disabled="true" value="<%=d.getCelular()%>"></td>
           </tr>
-           <tr>
-               <td>Dep/Prov/Dist:</td><td><input type="text"  size="30" disabled="true" value="<%=d.getIddepartamento() %> <%=d.getIdprovincia() %>"></td>
-          </tr>
+           <tr><sql:query var="sqlubigeo" dataSource="jdbc/mydb">
+                select nomdepartamento,nomprovincia, nomdistrito from persona p, 
+                                                                      departamento d, 
+                                                                      provincia pr, 
+                                                                      distrito di 
+                                                                      where  
+                                                                      p.idpersona=? and 
+                                                                      p.iddepartamento=d.iddepartamento and 
+                                                                      p.idprovincia=pr.idprovincia and 
+                                                                      p.iddepartamento=pr.iddepartamento and 
+                                                                      
+                                                                      p.iddistrito=di.iddistrito and 
+                                                                      p.idprovincia=di.idprovincia and 
+                                                                      p.iddepartamento=di.iddepartamento  
+                                                                      group BY p.idpersona
+              <sql:param value="${param.codigo}"/>
+               </sql:query>
+               <c:forEach var="fila" items="${sqlubigeo.rows}">
+               <td>Dep/Prov/Dist:</td><td><input type="text"  size="30" disabled="true" value="${fila.nomdepartamento} - ${fila.nomprovincia} - ${fila.nomdistrito}"></td>
+               </c:forEach>
+               </tr>
           <tr>
                <td>Domicilio:</td><td><input type="text"  size="30" disabled="true" value="<%=d.getDomicilio()%>"></td>
           </tr>
@@ -121,22 +142,39 @@
   <div class="panel-body">
       <table>
           <Tr>
-              <td>
+              <td> 
+                  <sql:query var="sqlfun" dataSource="jdbc/mydb">
+                select nomfunc, area from persona p, funcionario f where p.idpersona=? and f.idfuncionario=p.funcionario
+                      <sql:param value="${param.codigo}"/>
+               </sql:query>
+                  
                   Funcionario:<br><br><br><br>
               </td>
-              <td><input  disabled=""><br><br><br><br>
-              </td>
+              <td>
+                  <c:forEach var="fila" items="${sqlfun.rows}">
+
+
+                      <input type="text" value="${fila.nomfunc}" name="func" id="func" disabled=""><br><br><br><br>
+             
+                  </td>
           </tr>
           <Tr>
               <td>
-                  <br><br><br><br>
+                  <br>
               </td>
           </tr>
           
           <Tr>
               <td>
-                  Area:</td>
-              <td><input disabled="">
+                  Area:<br><br><br><br></td>
+              <td>
+
+                      
+                      
+                      
+
+                      <input type="text" value="${fila.area}" name="area" id="area" disabled=""><br><br><br><br>
+             </c:forEach> 
               </td>
           </tr>
 
@@ -159,6 +197,8 @@
   </div>
   </div>
                </td>
+              
+                
                <td>
                    <div class="panel panel-primary small h6">
   <div class="panel-heading">ARCHIVOS ADJUNTOS</div>

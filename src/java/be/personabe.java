@@ -9,6 +9,7 @@ package be;
  *
  * @author gustavo-pc
  */
+
 public class personabe {
     
     private int idpersona;
@@ -47,7 +48,7 @@ public class personabe {
         this.fecha = fecha;
         this.funcionario = funcionario;
     }
-
+        
     public int getIdpersona() {
         return idpersona;
     }

@@ -29,7 +29,7 @@ public class funcionariodao {
     
     public List<funcionariobe> getfunc(){
         List<funcionariobe> lista= new ArrayList();
-         String sql= "select idfuncionario, nomfunc from funcionario ";
+         String sql= "select * from funcionario ";
          Connection c=null;
          c=new base().getMysql();
         try {
@@ -39,6 +39,8 @@ public class funcionariodao {
                 funcionariobe e=new funcionariobe();
                        e.setIdfuncionario(rs.getInt("idfuncionario"));
                        e.setNomfuncionario(rs.getString("nomfunc"));
+                       e.setArea(rs.getString("area"));
+                       e.setIdcargo(rs.getInt("idcargo"));
                         
                 lista.add(e);
             }
